@@ -1,0 +1,165 @@
+
+ĐỐI vieeck thêm mới , mở lại : thực hiện như bình thường
+đối với việc cập nhật goi retime
+đối việc đóng user : thực hiện như thuật toán cũ
+chức năng quản lý thêm role và jobcode_role: điều kiện validate
+Quy hoạch lại màn hình quản lý role
+
+--- gưi project cho test
+
+        /* ROLE.04	Add một user vào một role có sẵn trong hệ thống    
+         * ex: userRightRole =>
+               <USER_ID>lv.tv.hdtdho.1</USER_ID>
+               <RIGHT_ROLE>
+                  <ROLE_CODE>R00002</ROLE_CODE>
+                  <DEPT_ID>290</DEPT_ID>
+               </RIGHT_ROLE>
+               <RIGHT_ROLE>
+                  <ROLE_CODE>R00002</ROLE_CODE>
+                  <DEPT_ID>290</DEPT_ID>
+               </RIGHT_ROLE>
+         *  .....................
+         */
+
+        <soapenv:Envelope xmlns:soapenv=\http://schemas.xmlsoap.org/soap/envelope/\ xmlns:fcub=\http://fcubs.ofss.com/service/FCUBSExternalService\> 
+                   <soapenv:Header/> 
+                   <soapenv:Body> 
+                      <fcub:LOSSERVICE_REQ> 
+                         <FCUBS_HEADER> 
+                            <SOURCE>LPBGW</SOURCE> 
+                            <UBSCOMP>FCUBS</UBSCOMP> 
+                            <MSGID>  msgID  </MSGID> 
+                            <USERID>  userEsb  </USERID> 
+                            <SERVICE>LOSService</SERVICE> 
+                            <OPERATION>CORELOS</OPERATION> 
+                            <PASSWORD>  passwordEsb  </PASSWORD> 
+                         </FCUBS_HEADER> 
+                         <FCUBS_BODY> 
+                            <SERVICE_IO> 
+                               <SERVICE_ID>700002</SERVICE_ID> 
+                               <PRODUCT_CODE>USER_RIGHT_ROLE</PRODUCT_CODE> 
+                            </SERVICE_IO> 
+                            <USER_RIGHT_ROLE>  userRightRole  </USER_RIGHT_ROLE> 
+                         </FCUBS_BODY> 
+                      </fcub:LOSSERVICE_REQ> 
+                   </soapenv:Body> 
+                </soapenv:Envelope>;
+        
+        /*
+         * ROLE.05	Remove một user ra một role có sẵn trong hệ thống
+         ex: userRightRole =>
+         *     
+         * <USER_ID>lv.tv.hdtdho.1</USER_ID>
+           <RIGHT_ROLE>
+               <ROLE_CODE>R00002</ROLE_CODE>
+               <DEPT_ID>290</DEPT_ID>
+          </RIGHT_ROLE>
+         */
+
+       <soapenv:Envelope xmlns:soapenv=\http://schemas.xmlsoap.org/soap/envelope/\ xmlns:fcub=\http://fcubs.ofss.com/service/FCUBSExternalService\> 
+                   <soapenv:Header/> 
+                   <soapenv:Body> 
+                      <fcub:LOSSERVICE_REQ> 
+                      <FCUBS_HEADER> 
+                            <SOURCE>LPBGW</SOURCE> 
+                            <UBSCOMP>FCUBS</UBSCOMP> 
+                            <MSGID>  msgID  </MSGID> 
+                            <USERID>  userEsb  </USERID> 
+                            <SERVICE>LOSService</SERVICE> 
+                            <OPERATION>CORELOS</OPERATION> 
+                            <PASSWORD>  passwordEsb  </PASSWORD> 
+                         </FCUBS_HEADER> 
+                         <FCUBS_BODY> 
+                            <SERVICE_IO> 
+                               <SERVICE_ID>700002</SERVICE_ID> 
+                               <PRODUCT_CODE>USER_RIGHT_ROLE_REMOVE</PRODUCT_CODE> 
+                            </SERVICE_IO> 
+                            <USER_RIGHT_ROLE>  userRightRole  </USER_RIGHT_ROLE> 
+                         </FCUBS_BODY> 
+                      </fcub:LOSSERVICE_REQ> 
+                   </soapenv:Body> 
+                </soapenv:Envelope>
+        
+
+        /*
+         * USER.01	Tạo mới User
+         * ex: userInfo =>
+         *     <DEPT_CODE>252</DEPT_CODE>
+               <EFFECTIVE>2019/10/10</EFFECTIVE>
+               <EXPIRY>2020/10/10</EXPIRY>
+               <TRY_COUNT>1</TRY_COUNT>
+               <EXTERNAL_ID>4</EXTERNAL_ID>
+               <STATUS>A</STATUS>
+               <USER_ID>LV.AG.XLN2</USER_ID>
+               <USER_NAME>Xử lí nợ</USER_NAME>
+               <EMAIL>abc@gmail.com</EMAIL>
+               <MOBILE_PHONE>091234568</MOBILE_PHONE>
+               <CUSTOMER_ID>1</CUSTOMER_ID>
+         */
+		 
+        <soapenv:Envelope xmlns:soapenv=\http://schemas.xmlsoap.org/soap/envelope/\ xmlns:fcub=\http://fcubs.ofss.com/service/FCUBSExternalService\> 
+                   <soapenv:Header/> 
+                   <soapenv:Body> 
+                      <fcub:LOSSERVICE_REQ> 
+                         <FCUBS_HEADER> 
+                            <SOURCE>LPBGW</SOURCE> 
+                            <UBSCOMP>FCUBS</UBSCOMP> 
+                            <MSGID>  msgID  </MSGID> 
+                            <CORRELID/> 
+                            <USERID>  userEsb  </USERID> 
+                            <SERVICE>LOSService</SERVICE> 
+                            <OPERATION>CORELOS</OPERATION> 
+                            <PASSWORD>  passwordEsb  </PASSWORD> 
+                         </FCUBS_HEADER> 
+                         <FCUBS_BODY> 
+                            <SERVICE_IO> 
+                               <SERVICE_ID>700002</SERVICE_ID> 
+                               <PRODUCT_CODE>USER_ADD_NEW</PRODUCT_CODE> 
+                            </SERVICE_IO> 
+                            <USER_INFO>  userInfo  </USER_INFO> 
+                         </FCUBS_BODY> 
+                      </fcub:LOSSERVICE_REQ> 
+                   </soapenv:Body> 
+                </soapenv:Envelope>;
+        
+
+        /*
+         * USER.02	Chỉnh sửa thông tin User
+         * ex: userInfo =>
+         *     <DEPT_CODE>252</DEPT_CODE>
+               <EFFECTIVE>2019/10/10</EFFECTIVE>
+               <EXPIRY>2020/10/10</EXPIRY>
+               <TRY_COUNT>1</TRY_COUNT>
+               <EXTERNAL_ID>4</EXTERNAL_ID>
+               <STATUS>A</STATUS>
+               <USER_ID>LV.AG.XLN2</USER_ID>
+               <USER_NAME>Xử lí nợ</USER_NAME>
+               <EMAIL>abc@gmail.com</EMAIL>
+               <MOBILE_PHONE>091234568</MOBILE_PHONE>
+               <CUSTOMER_ID>1</CUSTOMER_ID>
+         */
+        
+             <soapenv:Envelope xmlns:soapenv=\http://schemas.xmlsoap.org/soap/envelope/\ xmlns:fcub=\http://fcubs.ofss.com/service/FCUBSExternalService\> 
+                   <soapenv:Header/> 
+                   <soapenv:Body> 
+                      <fcub:LOSSERVICE_REQ> 
+                          <FCUBS_HEADER> 
+                            <SOURCE>LPBGW</SOURCE> 
+                            <UBSCOMP>FCUBS</UBSCOMP> 
+                            <MSGID>  msgID  </MSGID> 
+                            <USERID>  userEsb  </USERID> 
+                            <SERVICE>LOSService</SERVICE> 
+                            <OPERATION>CORELOS</OPERATION> 
+                            <PASSWORD>  passwordEsb  </PASSWORD> 
+                         </FCUBS_HEADER> 
+                         <FCUBS_BODY> 
+                            <SERVICE_IO> 
+                               <SERVICE_ID>700002</SERVICE_ID> 
+                               <PRODUCT_CODE>USER_MODIFY</PRODUCT_CODE> 
+                            </SERVICE_IO> 
+                            <USER_INFO>  userInfo  </USER_INFO> 
+                         </FCUBS_BODY> 
+                      </fcub:LOSSERVICE_REQ> 
+                   </soapenv:Body> 
+                </soapenv:Envelope>;
+      
