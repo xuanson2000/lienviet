@@ -1,9 +1,9 @@
 
-ĐỐI vieeck thêm mới , mở lại : thực hiện như bình thường
-đối với việc cập nhật goi retime
-đối việc đóng user : thực hiện như thuật toán cũ
-chức năng quản lý thêm role và jobcode_role: điều kiện validate
-Quy hoạch lại màn hình quản lý role
+sadsaf
+
+fasfasfa
+ssfksfas
+ầ
 
 --- gưi project cho test
 
